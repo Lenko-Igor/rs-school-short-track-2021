@@ -1,12 +1,17 @@
-function sortByHeight() {
-  // let i = 0
-  // const arrSortWhithHeight = arr.filter((item) => {
-  //   return (item !== -1)? true : false
-  // }).sort((a,b) => a-b)
+function sortByHeight(arr) {
+  let i = 0;
+  const arrSortWhithHeight = arr.filter((item) => (item !== -1)).sort((a, b) => a - b);
+  const result = [];
 
-  // return arr.map(e => {
-  //   return (e === -1)? e : e = arrSortWhithHeight[i++]
-  // })
+  arr.forEach((e) => {
+    if (e === -1) {
+      result.push(e);
+    } else {
+      result.push(arrSortWhithHeight[i++]);
+    }
+  });
+
+  return result;
 }
 
 module.exports = sortByHeight;
