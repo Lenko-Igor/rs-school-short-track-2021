@@ -9,7 +9,7 @@
  *
  */
 function encodeLine(/* str */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 module.exports = encodeLine;
