@@ -1,37 +1,23 @@
 function findIndex(array, value) {
-  let count = Math.ceil(array.length / 2);
+  let start = 0;
+  let end = array.length;
+  let middle = null;
+  let position = null;
 
-  function getHalfNumber(arr) {
-    const halfLength = Math.ceil(arr.length / 2);
-    const index = halfLength - 1;
-    const num = arr[index];
-
-    if (num === value) {
-      count -= 1;
-    } else if (value > num) {
-      const newArr = arr.slice(halfLength);
-      const step = Math.ceil(newArr.length / 2);
-      count += step;
-
-      getHalfNumber(newArr);
+  function binarySearch() {
+    middle = Math.floor((start + end) / 2);
+    if (array[middle] === value) {
+      position = middle;
+    } else if (value < array[middle]) {
+      end = middle - 1;
+      binarySearch();
     } else {
-      const newArr = arr.slice(0, index);
-
-      if (newArr.length === 2) {
-        const step = newArr.length / 2 + 1;
-        count -= step;
-      } else {
-        const step = Math.ceil(newArr.length / 2);
-        count -= step;
-      }
-
-      getHalfNumber(newArr);
+      start = middle + 1;
+      binarySearch();
     }
   }
-
-  getHalfNumber(array);
-
-  return count;
+  binarySearch();
+  return position;
 }
 
 module.exports = findIndex;
